@@ -6,7 +6,6 @@
 | ------------------ | ------ | -----------               |
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
-| password           | string | null: false               |
 | encrypted_password | string | null: false               |
 | first_name         | string | null: false               |
 | last_name          | string | null: false               |
@@ -21,17 +20,17 @@
 
 ## items テーブル
 
-| Column           | Type      | Options                        |
-| ---------------- | --------- | ------------------------------ |
-| item_name        | string    | null: false                    |
-| item_description | text      | null: false                    |
-| item_category    | integer   | null: false                    |
-| item_status      | integer   | null: false                    |
-| delivery_charge  | integer   | null: false                    |
-| shipping_area    | integer   | null: false                    |
-| shipping_days    | integer   | null: false                    |
-| Selling_price    | integer   | null: false                    |
-| user             | reference | null: false, foreign_key: true |
+| Column             | Type      | Options                        |
+| ------------------ | --------- | ------------------------------ |
+| item_name          | string    | null: false                    |
+| item_description   | text      | null: false                    |
+| item_category_id   | integer   | null: false                    |
+| item_status_id     | integer   | null: false                    |
+| delivery_charge_id | integer   | null: false                    |
+| prefectures_id     | integer   | null: false                    |
+| shipping_days_id   | integer   | null: false                    |
+| selling_price      | integer   | null: false                    |
+| user               | reference | null: false, foreign_key: true |
 
 ### Association
 
@@ -57,11 +56,11 @@
 | Column         | Type      | Options                        |
 | -------------- | --------- | ------------------------------ |
 | postal_code    | string    | null: false                    |
-| prefectures    | integer   | null: false                    |
+| prefectures_id | integer   | null: false                    |
 | municipality   | string    | null: false                    |
 | address_number | string    | null: false                    |
 | building_name  | string    |                                |
-| phone_number   | integer   | null: false                    |
+| phone_number   | string    | null: false                    |
 | order          | reference | null: false, foreign_key: true |
 
 
