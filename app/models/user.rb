@@ -9,7 +9,6 @@ class User < ApplicationRecord
   KATAKANA = /\A[ァ-ヶー－]+\z/.freeze
 
   validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
-  
   with_options presence: true do
     validates :nickname
     validates :first_name, format: { with: FULL_WIDTH, message: 'Full-width characters' }
@@ -18,6 +17,6 @@ class User < ApplicationRecord
     validates :last_name_kana, format: { with: KATAKANA, message: 'Full-width katakana characters' }
     validates :birthday
   end
-
+  has_many :orders
   has_many :items
 end
