@@ -7,8 +7,6 @@ RSpec.describe User, type: :model do
       # Fakerを使うとpasswordが英字のみor数字のみが生成されてしまう事がある為passwordのみ手打ち password { aaa111 }
     end
 
-
-
     describe 'ユーザー新規登録' do
       it '全て適切に入力すれば新規登録できること' do
         expect(@user).to be_valid
