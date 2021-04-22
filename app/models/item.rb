@@ -6,12 +6,14 @@ class Item < ApplicationRecord
     validates :image
     validates :item_name
     validates :item_description
-    validates :item_category_id,   numericality: { other_than: 1, message: 'Select' }
-    validates :item_status_id,     numericality: { other_than: 1, message: 'Select' }
-    validates :delivery_charge_id, numericality: { other_than: 1, message: 'Select' }
-    validates :prefectures_id,     numericality: { other_than: 1, message: 'Select' }
-    validates :shipping_days_id,   numericality: { other_than: 1, message: 'Select' }
-    validates :selling_price,      numericality: { greater_than: 299, less_than: 10_000_000, message: 'Out of setting range' }
+    validates :selling_price, numericality: { greater_than: 299, less_than: 10_000_000, message: 'Out of setting range' }
+    with_options numericality: { other_than: 1, message: 'Select' } do
+      validates :item_category_id
+      validates :item_status_id
+      validates :delivery_charge_id
+      validates :prefectures_id
+      validates :shipping_days_id
+    end
   end
 
   validates :selling_price, numericality: { only_integer: true, message: 'Half-width number' }
