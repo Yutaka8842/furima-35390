@@ -120,14 +120,11 @@
   </div>
   <%# /FURIMAの特徴 %>
 
-  <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
     <ul class='item-lists'>
      <%= render partial: 'item', collection: @items%>
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <% if @items.blank?%>
       <li class='list'>
         <%= link_to '#' do %>
@@ -147,11 +144,8 @@
         <% end %>
       </li>
       <% end %>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
   </div>
-  <%# /商品一覧 %>
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
