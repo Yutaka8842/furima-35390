@@ -47,7 +47,7 @@ RSpec.describe OrderAddress, type: :model do
       it '都道府県が空では商品購入できないこと（ActiveHashのidが１という事）' do
         @order_address.prefectures_id = 1
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Prefectures Select")
+        expect(@order_address.errors.full_messages).to include('Prefectures Select')
       end
       
       it '市区町村が空では商品購入ができないということ' do

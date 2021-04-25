@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
-  before_action :params_id, only: [:show, :edit, :update, :destroy]  
+  before_action :params_id, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :sold_move_to_index, only: :edit
 
@@ -22,11 +22,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
@@ -64,5 +62,4 @@ class ItemsController < ApplicationController
       redirect_to action: :index
     end
   end
-
 end
