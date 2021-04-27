@@ -7,8 +7,8 @@ class Item < ApplicationRecord
     validates :images
     validates :item_name
     validates :item_description
-    validates :selling_price, numericality: { greater_than: 299, less_than: 10_000_000, message: 'Out of setting range' }
-    with_options numericality: { other_than: 1, message: 'Select' } do
+    validates :selling_price, numericality: { greater_than: 299, less_than: 10_000_000, message: 'を¥300~¥9,999,999の間で入力してください' }
+    with_options numericality: { other_than: 1, message: 'を選んでください' } do
       validates :item_category_id
       validates :item_status_id
       validates :delivery_charge_id
@@ -17,7 +17,7 @@ class Item < ApplicationRecord
     end
   end
 
-  validates :selling_price, numericality: { only_integer: true, message: 'Half-width number' }
+  validates :selling_price, numericality: { only_integer: true, message: '半角数字で入力してください' }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :item_category

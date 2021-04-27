@@ -8,13 +8,13 @@ class User < ApplicationRecord
   FULL_WIDTH = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze
   KATAKANA = /\A[ァ-ヶー－]+\z/.freeze
 
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'は半角英字・半角数字を含めて入力してください'
   with_options presence: true do
     validates :nickname
-    validates :first_name, format: { with: FULL_WIDTH, message: 'Full-width characters' }
-    validates :last_name, format: { with: FULL_WIDTH, message: 'Full-width characters' }
-    validates :first_name_kana, format: { with: KATAKANA, message: 'Full-width katakana characters' }
-    validates :last_name_kana, format: { with: KATAKANA, message: 'Full-width katakana characters' }
+    validates :first_name, format: { with: FULL_WIDTH, message: 'は全角（ひらがな・カタカナ・漢字）で入力してください' }
+    validates :last_name, format: { with: FULL_WIDTH, message: 'は全角（ひらがな・カタカナ・漢字）で入力してください' }
+    validates :first_name_kana, format: { with: KATAKANA, message: 'は全角（カタカナ）で入力してください' }
+    validates :last_name_kana, format: { with: KATAKANA, message: 'は全角（カタカナ）で入力してください' }
     validates :birthday
   end
   has_many :orders
