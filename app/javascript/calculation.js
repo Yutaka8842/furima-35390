@@ -1,4 +1,5 @@
 function calculation (){
+  if ( document.getElementById('item-price')){
   const price = document.getElementById('item-price');
   price.addEventListener('input',() => {
     const formData = price.value;
@@ -7,5 +8,6 @@ function calculation (){
     tax.innerHTML = Math.floor(formData / 10).toLocaleString();
     profit.innerHTML = Math.ceil(formData - formData / 10).toLocaleString();
   });
+ }
 }
 window.addEventListener('load', calculation);
