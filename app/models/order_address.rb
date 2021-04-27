@@ -6,11 +6,11 @@ class OrderAddress
   PHONE_NUMBER = /\A\d{1,11}\z/.freeze
 
   with_options presence: true do
-    validates :postal_code,    format: { with: POSTAL_CODE, message: 'Input correctly' }
-    validates :prefectures_id, numericality: { other_than: 1, message: 'Select' }
+    validates :postal_code,    format: { with: POSTAL_CODE, message: '正しく入力してください' }
+    validates :prefectures_id, numericality: { other_than: 1, message: 'を選んでください' }
     validates :municipality
     validates :address_number
-    validates :phone_number,   format: { with: PHONE_NUMBER, message: 'Input only number' }
+    validates :phone_number,   format: { with: PHONE_NUMBER, message: '1~11桁半角数字で入力してください' }
     validates :user_id
     validates :item_id
     validates :token
