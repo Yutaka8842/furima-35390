@@ -18,4 +18,15 @@ ja:
         delivery_charge_id: 配送料の負担
         prefectures_id: 発送元の地域
         shipping_days_id: 発送までの日数
-      order:
+      
+  activemodel:
+    attributes:
+      order_address:
+        postal_code: 郵便番号
+        prefectures_id: 都道府県
+        municipality: 市区町村
+        address_number: 番地
+        phone_number: 電話番号
+        token: クレジットカード情報
+        user_id: ログインをしてください
+        item_id: 商品を選んでください
