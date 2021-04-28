@@ -14,7 +14,7 @@ const preview = () => {
      
       const inputHTML = document.createElement('input')
       inputHTML.setAttribute('id', `item_image_${imageElementNum}`)
-      inputHTML.setAttribute('name', 'item[images][]')
+      inputHTML.setAttribute('name', 'item_tag_form[images][]')
       inputHTML.setAttribute('type', 'file')
 
        imageElement.appendChild(blobImage);
