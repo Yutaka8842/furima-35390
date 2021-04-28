@@ -1,6 +1,5 @@
 <%= render "shared/second-header"%>
 
-
 <%= form_with model: @user, url:  user_registration_path, class: 'registration-main', local: true do |f| %>
 
 <div class='form-wrap'>
@@ -9,6 +8,30 @@
       会員情報入力
     </h1>
   </div>
+<%#カード情報表示 %> 
+  <div class='credit-card-form'>
+  <h1 class='info-input-haedline'>
+    クレジットカード情報
+  </h1>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">カード情報</label>
+    </div>
+    <%= "**** **** **** " + @card[:last4] %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">有効期限</label>
+    </div>
+    <div class='input-expiration-date-wrap'>
+    <%= @card[:exp_month] %>
+      <p>月 </p>
+    <%= @card[:exp_year] %>
+      <p>年</p>
+    </div>
+  </div>
+</div>
+<%#//カード情報表示 %> 
 
   <%= render 'shared/error_messages', model: f.object %>
 
@@ -97,7 +120,7 @@
     </h2>
   </div>
   <div class='register-btn'>
-    <%= f.submit "会員登録" ,class:"register-red-btn" %>
+    <%= f.submit "更新" ,class:"register-red-btn" %>
   </div>
   <p class='register-info'>本人情報の登録について</p>
 </div>
