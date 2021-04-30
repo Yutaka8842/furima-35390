@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :params_id, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :sold_move_to_index, only: [:edit, :update, :destroy]
+  before_action :search_object, only: [:search_page, :item_search]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -41,16 +42,28 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-  def search
+  def tag_search
     return nil if params[:keyword] == ""
     tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"] )
     render json:{ keyword: tag }
+  end
+
+  def search_page
+
+  end
+
+  def item_search
+    @results = @p.result
   end
 
   private
 
   def params_id
     @item = Item.find(params[:id])
+  end
+
+  def search_object
+    @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
   end
 
   def item_params

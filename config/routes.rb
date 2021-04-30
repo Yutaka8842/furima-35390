@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :items do
     resources :orders, only: [:index, :create]
     collection do
-      get 'search'
+      get 'tag_search'
+      get 'item_search'
+      get 'search_page'
     end
   end
   resources :users, only: [:show, :update]
