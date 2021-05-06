@@ -151,4 +151,9 @@
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
+
+<%= link_to(search_page_items_path, class: 'search-item-btn') do %>
+  <span class='search-item-btn-text'>商品を探す</span>
+  <%= image_tag 'search.png' , size: '185x50' ,class: "search-item-btn-icon" %>
+<% end %>
 <%= render "shared/footer" %>

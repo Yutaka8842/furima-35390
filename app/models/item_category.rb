@@ -13,5 +13,5 @@ class ItemCategory < ActiveHash::Base
     { id: 11, name: 'その他' }
   ]
   include ActiveHash::Associations
-  has_many :items
+  has_many :item_tag_forms
 end
