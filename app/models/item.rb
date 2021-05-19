@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_one :order, dependent: :destroy
   has_many_attached :images, dependent: :destroy
 
-  has_many :item_tags
+  has_many :item_tags ,dependent: :destroy
   has_many :tags, through: :item_tags
 
   extend ActiveHash::Associations::ActiveRecordExtensions
