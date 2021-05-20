@@ -5,12 +5,15 @@ class OrdersController < ApplicationController
   before_action :sold_move_to_root, only: [:index, :create]
 
   def index
+    if current_user.card.blank?
+      redirect_to new_card_path
+    else
     @order_address = OrderAddress.new
-
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     card = Card.find_by(user_id: current_user.id)
-    customer = Payjp::Customer.retrieve(card.customer_token) # 先程のカード情報を元に、顧客情報を取得
+    customer = Payjp::Customer.retrieve(card.customer_token)
     @card = customer.cards.first
+    end
   end
 
   def create
@@ -23,14 +26,6 @@ class OrdersController < ApplicationController
     else
       render 'index'
     end
-
-      # if @order_address.valid?
-       # pay_item
-        # @order_address.save
-        # redirect_to root_path
-      # else
-       # render 'index'
-      # end
   end
 
   private
@@ -55,22 +50,14 @@ class OrdersController < ApplicationController
     end
   end
 
- # def pay_item
-  #  Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-  #  Payjp::Charge.create(
-  #    amount: @item.selling_price,
-  #    card: order_params[:token],
-  #    currency: 'jpy'
-  #  )
- # end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む
-    customer_token = current_user.card.customer_token # ログインしているユーザーの顧客トークンを定義
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    customer_token = current_user.card.customer_token 
     Payjp::Charge.create(
-      amount: @item.selling_price, # 商品の値段
-      customer: customer_token, # 顧客のトークン
-      currency: 'jpy' # 通貨の種類（日本円）
+      amount: @item.selling_price,
+      customer: customer_token, 
+      currency: 'jpy' 
     )
   end
 end

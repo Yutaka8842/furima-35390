@@ -1,4 +1,4 @@
-const pay = () => {
+//const pay = () => {
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   if ( document.getElementById('charge-form')){
   const form = document.getElementById("charge-form");
@@ -31,6 +31,6 @@ const pay = () => {
     });
   });
  }
-};
+//};
 
-window.addEventListener("load", pay);
+//window.addEventListener("load", pay);
